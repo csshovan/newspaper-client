@@ -20,6 +20,10 @@ export const updateUser = async (id, userData) => {
   const { data } = await axiosSecure.put(`/user/${id}`, userData)
   return data
 }
+export const updateUserPremium = async (email, time) => {
+  const { data } = await axiosSecure.put(`/userPremium/${email}`, time)
+  return data
+}
 
 export const getRole = async (email) => {
   const { data } = await axiosSecure(`/user/${email}`)

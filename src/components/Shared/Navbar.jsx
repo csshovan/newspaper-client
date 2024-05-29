@@ -3,12 +3,16 @@ import logo from '../../assets/images/logo.png'
 import { Link, NavLink } from 'react-router-dom'
 import avatarImg from '../../assets/images/placeholder.jpg'
 import useAuth from '../../hooks/useAuth'
+import useRole from '../../hooks/useRole'
+import useUser from '../../hooks/useUser'
+import { updateUser, updateUserPremium } from '../../api/Auth'
+import Loader from './Loader'
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false)
   const { user, logOut } = useAuth()
-
-  // const [userData] = useUser()
+  const [role] = useRole()
+  const [userData,isLoading] = useUser(); 
 
   const handleSignOut = () => {
     logOut().then().catch()
@@ -35,11 +39,40 @@ const Navbar = () => {
         <NavLink to={'/'}>Home</NavLink>
       </li>
       <li className="font-bold">
-        <NavLink to={'/shop'}>Shop</NavLink>
-      </li>
+      <NavLink to={'/all-article'}>All Article</NavLink>
+    </li>
+     
+     {
+      user &&  <li className="font-bold">
+      <NavLink to={'/add-article'}>Add Article</NavLink>
+    </li>
+     }
+     {
+      user &&  <li className="font-bold">
+      <NavLink to={'/subcription'}>Subscription</NavLink>
+    </li>
+     }
+     {
+      role === 'admin' &&  <li className="font-bold">
+      <NavLink to={'/dashboard'}>Dashboard</NavLink>
+    </li>
+     }
+     {
+      user &&  <li className="font-bold">
+      <NavLink to={'/my-article'}>My Article</NavLink>
+    </li>
+     }
+     {
+      userData.isPremium &&  <li className="font-bold">
+      <NavLink to={'/premium-article'}>Premium Articles</NavLink>
+    </li>
+     }
+     
+     
     </>
   )
 
+ 
   return (
     <header className="fixed top-0 left-0 right-0">
       <div

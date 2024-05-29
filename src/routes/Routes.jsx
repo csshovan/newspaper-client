@@ -96,7 +96,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'add-publishers',
+        path: 'add-publisher',
         element: (
           <PrivateRoutes>
             <AdminRoutes>

@@ -10,6 +10,7 @@ import { AiOutlineBars } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { MdOutlineSpaceDashboard } from 'react-icons/md'
 import MenuItem from './MenuItem'
+import { FaUsers, FaShoppingBag, FaPlusCircle, FaEdit } from "react-icons/fa";
 
 // import useAuth from '../../hooks/useAuth'
 // import useRole from '../../hooks/useRole'
@@ -72,14 +73,19 @@ const Sidebar = () => {
                 address="/dashboard"
               />
               <MenuItem
-                icon={MdOutlineSpaceDashboard}
-                label="Dashboard"
-                address="/dashboard"
+                icon={FaUsers}
+                label="Users"
+                address="/dashboard/users"
               />
               <MenuItem
                 icon={MdOutlineSpaceDashboard}
-                label="Dashboard"
-                address="/dashboard"
+                label="All Article"
+                address="/dashboard/allarticle"
+              />
+              <MenuItem
+                icon={FaPlusCircle}
+                label="Add Publisher"
+                address="/dashboard/add-publisher"
               />
 
               {/* Menu Items */}
